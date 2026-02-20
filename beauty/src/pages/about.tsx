@@ -1,7 +1,17 @@
 import { Target, Eye, MapPin, Award, Users, Lightbulb, ShieldCheck, Cpu } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const About = () => {
   return (
+    <>
+
+    <Helmet>
+            <title>About Hexon Technical</title>
+            <meta name="description" content="Uganda's Premier Engineering Firm." />
+            <link rel="canonical" href="https://gregorialindustries.com/about" />
+            <meta name="keywords" content='Hexon Technical History, Engineering Consultants Uganda, Nansana Technical Services, Professional Electricians Wakiso'/>
+    </Helmet>
+
     <div className="bg-white dark:bg-gray-800 transition-colors duration-300">
       {/* Hero Section: Identity */}
       <section className="pt-24 pb-16 px-6 bg-amber-500">
@@ -99,6 +109,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

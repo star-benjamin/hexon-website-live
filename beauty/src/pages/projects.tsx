@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Play, MapPin, ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Zap, Lock } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const Projects = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -41,6 +42,14 @@ const Projects = () => {
   };
 
   return (
+    <>
+    <Helmet>
+            <title>Our Engineering Portfolio</title>
+            <meta name="description" content="Hexon Technical Projects." />
+            <link rel="canonical" href="https://gregorialindustries.com/projects" />
+            <meta name="keywords" content='Solar Grid Portfolio, Hexon Technical Projects, Electrical Contracting Gallery, Solar Water Heater Installations, CCTV Projects Uganda'/>
+    </Helmet>
+
     <div className="bg-white dark:bg-gray-800 min-h-screen pb-20 overflow-x-hidden transition-colors">
       {/* Header */}
       <div className="pt-24 pb-12 px-6 text-center">
@@ -132,6 +141,7 @@ const Projects = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

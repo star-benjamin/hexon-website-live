@@ -5,6 +5,7 @@ import {
   ShieldCheck, Activity, HardDrive 
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Services = () => {
   const navigate = useNavigate();
@@ -48,6 +49,14 @@ const Services = () => {
   ];
 
   return (
+    <>
+    <Helmet>
+        <title>Professional Solar, Electrical & IT Security Solutions | Hexon Technical</title>
+        <meta name="description" content="From solar grid installations to biometric access control, Hexon Technical provides world-class engineering solutions in Wakiso and Kampala." />
+        <link rel="canonical" href="https://gregorialindustries.com/services" />
+        <meta name="keywords" content='CCTV Installation Uganda, Biometric Access Control, Electrical Auditing, Hospital Solar Systems, UPS Backup Systems, Industrial Electrical Supply'/>
+    </Helmet>
+
     <div className="bg-white dark:bg-gray-800 transition-colors duration-300">
       {/* Header Section */}
       <div className="bg-amber-500 py-16 px-6 text-center text-black">
@@ -111,6 +120,7 @@ const Services = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

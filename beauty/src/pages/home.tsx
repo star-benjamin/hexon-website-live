@@ -1,10 +1,25 @@
 import { useNavigate } from 'react-router-dom';
 import { Zap, Sun, ShieldCheck, ArrowRight, Lock, Eye, Activity } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
+    <>
+
+    <Helmet>
+            <meta property="og:type" content="website" />
+            <link rel="canonical" href="https://gregorialindustries.com/" />
+            <meta property="og:title" content="Hexon Technical Services | Power & Security Experts" />
+            <meta property="og:description" content="Certified Solar Energy, Industrial Electrical Wiring, and Biometric Security Systems in Uganda." />
+            <meta property="og:url" content="https://gregorialindustries.com/" />
+            <meta property="og:image" content="https://gregorialindustries.com/logo.jpg" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta name="keywords" content="Hexon Technical, Solar Uganda, Biometrics Kampala, Engineering Firm Wakiso, Renewable Energy Uganda, Security Systems Kampala" />
+    </Helmet>
+
     <div className="overflow-x-hidden transition-colors duration-300">
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-[95vh] flex items-center bg-gray-900 text-white">
@@ -135,6 +150,7 @@ const Home = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
