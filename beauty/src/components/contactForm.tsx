@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const [status, setStatus] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('Sending...');
-    // submission logic here
+
+    const SERVICE_ID = 'hexon_gmail';
+    const TEMPLATE_ID = 'template_cf35xhd';
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // submission logic
+
+    if (formRef.current) {
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+        .then(() => {
+          setStatus('Message Sent!');
+          formRef.current?.reset(); // Clear the form
+          setTimeout(() => setStatus(''), 3000);
+        }, (error) => {
+          console.error('EmailJS Error:', error);
+          setStatus('Failed to send. Try again.');
+          setTimeout(() => setStatus(''), 3000);
+        });
+    }
     setTimeout(() => {
       setStatus('Message Sent!');
       setTimeout(() => setStatus(''), 3000); // Reset status after 3 seconds
@@ -64,10 +84,11 @@ const ContactForm = () => {
 
         {/* Right Side: The Form */}
         <div className="p-10">
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Full Name</label>
               <input 
+                name="from_name" 
                 type="text" 
                 required 
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
@@ -78,6 +99,7 @@ const ContactForm = () => {
             <div>
               <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
               <input 
+                name="reply_to" 
                 type="email" 
                 required 
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
@@ -87,7 +109,7 @@ const ContactForm = () => {
 
             <div>
               <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Service Required</label>
-              <select className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all">
+              <select name="service" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all">
                 <optgroup label="Security & IT">
                   <option>Biometric Access Control</option>
                   <option>CCTV & Surveillance Systems</option>
@@ -98,11 +120,6 @@ const ContactForm = () => {
                   <option>Solar Water Heaters</option>
                   <option>UPS & Backup Systems</option>
                 </optgroup>
-                <optgroup label="Electrical Services">
-                  <option>Electrical Auditing & Maintenance</option>
-                  <option>Industrial Electrical Installation</option>
-                  <option>Lightning Arrestors</option>
-                </optgroup>
                 <option>General Inquiry</option>
               </select>
             </div>
@@ -110,6 +127,7 @@ const ContactForm = () => {
             <div>
               <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Your message</label>
               <textarea 
+                name="message" 
                 rows={4}
                 required 
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
@@ -119,7 +137,8 @@ const ContactForm = () => {
 
             <button 
               type="submit" 
-              className="w-full bg-amber-500 hover:bg-amber-600 text-black font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 active:scale-95"
+              disabled={status === 'Sending...'}
+              className="w-full bg-amber-500 hover:bg-amber-600 text-black font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 active:scale-95 disabled:opacity-50"
             >
               {status || 'Send Message'}
             </button>

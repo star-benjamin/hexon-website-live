@@ -6,7 +6,7 @@ const Header = ({ logo }) => {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: 'Home', path: "/" },
     { name: 'Services', path: '/services' },
     { name: 'Project Gallery', path: '/projects' },
     { name: 'About Us', path: '/about' },
