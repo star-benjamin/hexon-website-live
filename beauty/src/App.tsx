@@ -1,6 +1,5 @@
-import {BrowserRouter, Routes,Route,} from 'react-router-dom';
-import { useState } from 'react';
-//Import the pages
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Home from './pages/home';
 import Services from './pages/services';
 import Projects from './pages/projects';
@@ -8,24 +7,51 @@ import About from './pages/about';
 import ContactUs from './pages/contactUs';
 import Teams from './pages/teams';
 import NotFound from './pages/notFound';
-import logo from "./assets/logo.jpg"
-import './App.css'
+import logo from "./assets/logo.jpg";
+import './App.css';
 import Footer from './components/footer';
 import Header from './components/header';
-import {HelmetProvider} from 'react-helmet-async'; 
+import { HelmetProvider } from 'react-helmet-async'; 
+import ScrollToTop from './components/scrollToTop'; 
 
 function App() {
+  // Explicitly typing state as boolean for TypeScript safety
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => setDarkMode((prev) => !prev);
 
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <div className='min-h-screen bg-white text-black dark:bg-gray-800 dark:text-white overflow-x-hidden'>
-          {/*header*/}
+        <ScrollToTop /> 
+        
+        <div className='min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500'>
           
-          <Header logo={logo}/>
+          <Header 
+            logo={logo} 
+            darkMode={darkMode} 
+            toggleTheme={toggleTheme}
+          />
 
-          {/*Page content*/}
-        <main className='p-6 mt-20'>
+          
+          <main className='flex-grow pt-22'>
             <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/services" element={<Services/>}/>
@@ -35,13 +61,13 @@ function App() {
               <Route path='/contactUs' element={<ContactUs/>}/>
               <Route path="*" element={<NotFound/>}/>
             </Routes>
-         </main>
+          </main>
+
+          <Footer/>
         </div>
-        <Footer/>
       </BrowserRouter>
-      </HelmetProvider>
-   
-  )
+    </HelmetProvider>
+  );
 }
 
-export default App
+export default App;

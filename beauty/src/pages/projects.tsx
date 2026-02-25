@@ -1,146 +1,231 @@
-import { useRef } from 'react';
-import { Play, MapPin, ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Zap, Lock } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Play, MapPin, ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Lock } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+
+
+interface ProjectImage {
+  url: string;
+  caption: string;
+}
+
+const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: string }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  if (!images || images.length === 0) {
+    return (
+      <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 uppercase font-black text-xs tracking-widest">
+        No Images Available
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full h-full overflow-hidden group bg-black">
+      {/* Horizontal Slider Wrapper */}
+      <div 
+        className="flex h-full transition-transform duration-700 ease-in-out" 
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {images.map((img, idx) => (
+          <div key={idx} className="w-full h-full flex-shrink-0 relative">
+            <img 
+              src={img.url} 
+              alt={`${title} - ${img.caption}`} 
+              className="w-full h-full object-cover"
+            />
+            {/* 2. THE CAPTION OVERLAY */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 pt-12 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+              <p className="text-white text-sm font-medium tracking-wide">
+                <span className="text-amber-500 font-bold mr-2">0{idx + 1} //</span> 
+                {img.caption}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      {images.length > 1 && (
+        <>
+          <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity z-10 pb-16">
+            <button 
+              onClick={prevImage}
+              className="p-3 bg-white/10 backdrop-blur-md text-white rounded-2xl hover:bg-amber-500 hover:text-black transition-all"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button 
+              onClick={nextImage}
+              className="p-3 bg-white/10 backdrop-blur-md text-white rounded-2xl hover:bg-amber-500 hover:text-black transition-all"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Progress Indicators */}
+          <div className="absolute top-6 right-6 z-10 flex gap-2">
+             {images.map((_, idx) => (
+              <div 
+                key={idx}
+                className={`h-1 transition-all duration-300 rounded-full ${
+                  currentIndex === idx ? 'w-6 bg-amber-500' : 'w-2 bg-white/40'
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const Projects = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Updated to include your new service categories
   const videos = [
-    { id: 1, title: "Biometric Access Control Setup", videoId: "VIDEO_ID_HERE", location: "Corporate Plaza, Kampala", category: "Security" },
-    { id: 2, title: "Hospital Solar Grid Installation", videoId: "VIDEO_ID_HERE", location: "Entebbe Referral", category: "Solar" },
-    { id: 3, title: "High-Definition CCTV Network", videoId: "VIDEO_ID_HERE", location: "Industrial Area", category: "IT Security" },
-    { id: 4, title: "UPS & Backup Commissioning", videoId: "VIDEO_ID_HERE", location: "Government Offices", category: "Electrical" },
+    { id: 1, title: "Biometric Access Control Setup", videoId: "VIDEO_ID_1", location: "Corporate Plaza, Kampala", category: "Security" },
+    { id: 2, title: "Hospital Solar Grid Installation", videoId: "VIDEO_ID_2", location: "Entebbe Referral", category: "Solar" },
+    { id: 3, title: "High-Definition CCTV Network", videoId: "VIDEO_ID_3", location: "Industrial Area", category: "IT Security" },
   ];
 
+  // 3. UPDATED CASE STUDIES DATA
   const caseStudies = [
     {
       sector: "Security & IT",
-      title: "Advanced Biometric Integration",
-      desc: "Implementation of facial recognition and fingerprint access control systems for high-security zones.",
+      title: "Advanced surveilance Biometric Integration ",
+      desc: "Deployment of surveilance cameras and multi-modal facial recognition and biometric entry systems for homes, businesses areas and corporate headquarters.",
       icon: <Lock size={20} />,
-      imagePlaceholder: "Biometric Reader / Secure Entrance Image"
+      images: [
+        { url: "/images/security/cameraOnFence.jpeg", caption: "Camera on the fence" },
+        { url: "/images/security/smartLock.jpeg", caption: "smart authentication device" },
+        { url: "/images/security/intalledCameraFeed.jpeg", caption: "Live camera feed from an installed security camera." },
+        { url: "/images/security/solarPoweredInfraRedSecuriityCamera.jpeg", caption: "Integrated dashboard for real-time traffic logs." }
+      ]
     },
     {
-      sector: "Government & Infrastructure",
-      title: "UEDCL Electrical Auditing",
-      desc: "Professional auditing and maintenance of critical grid components to ensure zero-downtime performance.",
+      sector: "Solar Power",
+      title: "Solar System Installation and Maintenance",
+      desc: "Designing and installation of efficient solar systems using high quality materials guaranteed to meet your needs. We also offer solar system maintenance and repair services",
       icon: <ShieldCheck size={20} />,
-      imagePlaceholder: "Electrical Panel / Technician Auditing Image"
+      images: [
+        { url: "/images/solar/roofSolarInstallation1.jpeg", caption: "Rooftop photovoltaic array installation for maximum yield." },
+        { url: "/images/solar/roofSolarInstallation2.jpeg", caption: "Rooftop solar solar panel installation." },
+        { url: "/images/solar/roofSolarInstallation3.jpeg", caption: "Rooftop solar solar panel installation." },
+        { url: "/images/solar/solarStreetLights.jpeg", caption: "solar powered street light installation." }
+      ]
     }
   ];
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === 'left' 
-        ? scrollLeft - clientWidth / 1.5 
-        : scrollLeft + clientWidth / 1.5;
-      
+      const scrollTo = direction === 'left' ? scrollLeft - clientWidth / 1.5 : scrollLeft + clientWidth / 1.5;
       scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
 
   return (
     <>
-    <Helmet>
-            <title>Our Engineering Portfolio</title>
-            <meta name="description" content="Hexon Technical Projects." />
-            <link rel="canonical" href="https://gregorialindustries.com/projects" />
-            <meta name="keywords" content='Solar Grid Portfolio, Hexon Technical Projects, Electrical Contracting Gallery, Solar Water Heater Installations, CCTV Projects Uganda'/>
-    </Helmet>
+      <Helmet>
+        <title>Engineering Portfolio | Hexon Technical Projects</title>
+        <meta name="description" content="Explore our technical milestones in Solar Energy and Security." />
+      </Helmet>
 
-    <div className="bg-white dark:bg-gray-800 min-h-screen pb-20 overflow-x-hidden transition-colors">
-      {/* Header */}
-      <div className="pt-24 pb-12 px-6 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold dark:text-white mb-4">
-          Technical <span className="text-amber-500">Milestones</span>
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-          From advanced biometric security to nationwide solar installations, we document our commitment to precision.
-        </p>
-      </div>
-
-      {/* Main Case Studies Section */}
-      <div className="max-w-7xl mx-auto px-6 mb-24">
-        <div className="grid grid-cols-1 gap-12">
-          {caseStudies.map((study, index) => (
-            <div key={index} className="flex flex-col lg:flex-row bg-gray-50 dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow">
-              {/* Image Side */}
-              <div className="lg:w-1/2 h-64 lg:h-auto bg-gray-200 dark:bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                {/* --- IMAGE PLACEHOLDER --- */}
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-bold uppercase tracking-widest text-center px-4">
-                   [ {study.imagePlaceholder} ]
-                </div>
-               
-              </div>
-
-              {/* Content Side */}
-              <div className="lg:w-1/2 p-10 flex flex-col justify-center">
-                <div className="flex items-center gap-2 text-amber-600 mb-4">
-                  {study.icon}
-                  <span className="text-xs font-black uppercase tracking-widest">{study.sector}</span>
-                </div>
-                <h3 className="text-3xl font-bold dark:text-white mb-4">{study.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                  {study.desc}
-                </p>
-                <div className="flex gap-4">
-                  <button className="flex items-center gap-2 bg-amber-500 text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-amber-600 transition-colors">
-                    View Specs <ExternalLink size={16}/>
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+      <div className="bg-white dark:bg-gray-900 min-h-screen pb-20 transition-colors duration-500">
+        <div className="pt-32 pb-20 px-6 text-center">
+          <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-xs mb-4 block">Proven Experience</span>
+          <h1 className="text-5xl md:text-7xl font-black dark:text-white mb-6 tracking-tighter uppercase">
+            Technical <span className="text-amber-500">Milestones</span>
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg font-medium">
+            A portfolio of precision engineering and infrastructure reliability.
+          </p>
         </div>
-      </div>
 
-      {/* VIDEO SECTION */}
-      <section className="bg-gray-900 py-20 relative">
-        <div className="max-w-7xl mx-auto px-6 mb-10 flex items-center justify-between">
-          <div>
-            <h2 className="text-3xl font-bold text-white flex items-center gap-3">
-              <Play className="text-amber-500 fill-amber-500" /> Field Documentation
-            </h2>
-            <p className="text-gray-400 mt-2">Watch our technical teams in action across Uganda.</p>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 mb-32">
+          <div className="grid grid-cols-1 gap-20 h-250">
+            {caseStudies.map((study, index) => (
+              <div 
+                key={index} 
+                className="flex flex-col lg:flex-row bg-gray-50 dark:bg-gray-800 rounded-[3rem] overflow-hidden border border-gray-100 dark:border-gray-700 shadow-xl dark:shadow-none"
+              >
+                <div className="lg:w-1/2 h-[500px] lg:h-auto min-h-[500px]">
+                  <CaseStudyGallery images={study.images} title={study.title} />
+                </div>
 
-          <div className="flex gap-3">
-            <button onClick={() => scroll('left')} className="p-3 rounded-full border border-gray-700 text-white hover:bg-amber-500 hover:text-black transition-all">
-              <ChevronLeft size={24} />
-            </button>
-            <button onClick={() => scroll('right')} className="p-3 rounded-full border border-gray-700 text-white hover:bg-amber-500 hover:text-black transition-all">
-              <ChevronRight size={24} />
-            </button>
+                <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 text-amber-600 dark:text-amber-500 mb-8">
+                    <div className="p-3 bg-amber-500/10 rounded-2xl">{study.icon}</div>
+                    <span className="text-sm font-black uppercase tracking-widest">{study.sector}</span>
+                  </div>
+                  <h3 className="text-4xl font-black dark:text-white mb-6 leading-none uppercase tracking-tight">
+                    {study.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-10 text-xl leading-relaxed">
+                    {study.desc}
+                  </p>
+                  <div>
+                    <button className="inline-flex items-center gap-3 bg-gray-900 dark:bg-amber-500 text-white dark:text-black px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all">
+                      View Technical Specs <ExternalLink size={18}/>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div ref={scrollRef} className="flex gap-6 overflow-x-auto px-6 md:px-[calc((100vw-1280px)/2+24px)] no-scrollbar scroll-smooth">
-          {videos.map((video) => (
-            <div key={video.id} className="min-w-[320px] md:min-w-[480px] group">
-              <div className="relative aspect-video rounded-3xl overflow-hidden bg-black border border-gray-800">
-                {/* --- VIDEO PLACEHOLDER --- */}
-                <iframe
-                  className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity"
-                  src={`https://www.youtube.com/embed/${video.videoId}`}
-                  title={video.title}
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <div className="mt-5 px-2">
-                <span className="text-amber-500 text-[10px] font-bold uppercase tracking-widest">{video.category}</span>
-                <h3 className="text-white font-bold text-xl mt-1">{video.title}</h3>
-                <p className="text-gray-500 text-sm flex items-center gap-1 mt-2">
-                  <MapPin size={14} className="text-amber-500" /> {video.location}
-                </p>
-              </div>
+        {/*Video section */}
+        <section className="bg-gray-950 py-32 relative">
+          <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">
+                Field <span className="text-amber-500">Documentation</span>
+              </h2>
+              <p className="text-gray-500 mt-4 text-xl">Real-time technical deployment on the grid.</p>
             </div>
-          ))}
-          <div className="min-w-[40px]" /> 
-        </div>
-      </section>
-    </div>
+            <div className="flex gap-4">
+              <button onClick={() => scroll('left')} className="p-5 rounded-2xl border border-gray-800 text-white hover:bg-amber-500 hover:text-black transition-all active:scale-90">
+                <ChevronLeft size={28} />
+              </button>
+              <button onClick={() => scroll('right')} className="p-5 rounded-2xl border border-gray-800 text-white hover:bg-amber-500 hover:text-black transition-all active:scale-90">
+                <ChevronRight size={28} />
+              </button>
+            </div>
+          </div>
+
+          <div ref={scrollRef} className="flex gap-10 overflow-x-auto px-6 md:px-[calc((100vw-1280px)/2+24px)] no-scrollbar scroll-smooth">
+            {videos.map((video) => (
+              <div key={video.id} className="min-w-[320px] md:min-w-[600px] group">
+                <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-black border border-gray-800 group-hover:border-amber-500 transition-colors duration-500">
+                  <iframe
+                    className="w-full h-full opacity-60 group-hover:opacity-100 transition-all duration-700"
+                    src={`https://www.youtube.com/embed/${video.videoId}`}
+                    title={video.title}
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="mt-8 px-4">
+                  <h3 className="text-white font-black text-2xl uppercase tracking-tight">{video.title}</h3>
+                  <p className="text-gray-500 text-sm flex items-center gap-2 mt-4 font-bold">
+                    <MapPin size={18} className="text-amber-500" /> {video.location}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </>
   );
 };

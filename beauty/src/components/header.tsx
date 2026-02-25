@@ -1,8 +1,18 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, Zap } from 'lucide-react'; // Added Lucide icons for the menu
+import { Menu, X } from 'lucide-react'; 
+import ThemeToggle from './themeToggle'; 
 
-const Header = ({ logo }) => {
+interface HeaderProps {
+  logo: string;
+  darkMode: boolean;
+  toggleTheme: () => void;
+}
+
+
+
+// Receive toggle props from App.jsx
+const Header = ({ logo, darkMode, toggleTheme }: HeaderProps) => {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
@@ -15,19 +25,23 @@ const Header = ({ logo }) => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-all">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         
         {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2">
+        <NavLink to="/" className="flex items-center gap-2 group">
           <img 
             src={logo} 
-            alt="Hexon technical services ltd Logo" 
-            className="w-16 h-16 md:w-20 md:h-20 object-contain"
+            alt="Hexon logo" 
+            className="w-14 h-14 md:w-16 md:h-16 object-contain group-hover:scale-105 transition-transform"
           />
           <div className="hidden lg:block">
-             <span className="block text-xl font-black tracking-tighter dark:text-white">We are more than conquerers</span>
-             
+             <span className="block text font-black tracking-tighter dark:text-white uppercase leading-none">
+               Hexon<span className="text-amber-500">Technical</span>Services
+             </span>
+             <span className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
+               More than conquerors
+             </span>
           </div>
         </NavLink>
 
@@ -49,19 +63,24 @@ const Header = ({ logo }) => {
           ))}
         </nav>
 
-        {/* Mobile Toggle & Action */}
-        <div className="flex items-center gap-4">
+        {/* Action Area */}
+        <div className="flex items-center gap-2 md:gap-4">
+          
+          {/* THEME TOGGLE - Pass down the props here */}
+          <ThemeToggle darkMode={darkMode} toggleTheme={toggleTheme} />
+
+          {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white transition-all"
+            className="md:hidden p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white transition-all active:scale-90"
             onClick={() => setOpen(!open)}
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
           
-          {/*CTA Button on Desktop */}
+          {/* CTA Button */}
           <NavLink 
             to="/contactUs" 
-            className="hidden lg:flex items-center gap-2 bg-gray-900 dark:bg-amber-500 text-white dark:text-black px-5 py-2.5 rounded-xl text-sm font-black transition-all hover:scale-105 active:scale-95"
+            className="hidden lg:flex items-center gap-2 bg-gray-900 dark:bg-amber-500 text-white dark:text-black px-6 py-2.5 rounded-xl text-sm font-black transition-all hover:scale-105 active:scale-95 shadow-lg dark:shadow-amber-500/20"
           >
             Get Quote
           </NavLink>
@@ -70,17 +89,17 @@ const Header = ({ logo }) => {
 
       {/* Mobile Menu Overlay */}
       <div className={`
-        fixed inset-0 top-[88px] z-50  dark:bg-gray-900 p-6 transition-all duration-300 md:hidden
-        ${open ? "translate-x-0 opacity-100 " : "translate-x-full opacity-0"}
+        fixed inset-0 top-[72px] md:top-[88px] z-50 bg-white dark:bg-gray-900 p-6 transition-all duration-500 md:hidden
+        ${open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"}
       `}>
-        <nav className="flex flex-col gap-0 bg-white">
+        <nav className="flex flex-col gap-2">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
               to={link.path}
               onClick={() => setOpen(false)}
               className={({ isActive }) => `
-                text-2xl font-black py-4 border-b border-gray-100 dark:border-gray-800
+                text-3xl font-black py-4 border-b border-gray-100 dark:border-gray-800 transition-colors
                 ${isActive ? "text-amber-500" : "text-gray-900 dark:text-white"}
               `}
             >
@@ -89,12 +108,16 @@ const Header = ({ logo }) => {
           ))}
         </nav>
         
-        <div className="mt-1 p-3 bg-amber-500 rounded-3xl text-black">
-          <p className="font-bold text-lg mb-2">Need Help?</p>
-          <p className="text-sm opacity-80 mb-4">Chat with our engineers on WhatsApp now.</p>
-          <a href="https://wa.me/256393662244" className="inline-block bg-black text-white px-6 py-3 rounded-xl font-bold">
-            Chat Now
-          </a>
+        <div className="mt-12 p-8 bg-amber-500 rounded-[2.5rem] text-black relative overflow-hidden group">
+          <div className="relative z-10">
+            <p className="font-black text-2xl mb-2">Need Help?</p>
+            <p className="font-medium opacity-90 mb-6">Connect with our support team on WhatsApp.</p>
+            <a href="https://wa.me/256393662244" className="inline-flex items-center bg-black text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl">
+              Start Chat
+            </a>
+          </div>
+          {/* Decorative Circle */}
+          <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-black/5 rounded-full" />
         </div>
       </div>
     </header>
