@@ -92,7 +92,7 @@ const Header = ({ logo, darkMode, toggleTheme }: HeaderProps) => {
         fixed inset-0 top-[72px] md:top-[88px] z-50 bg-white dark:bg-gray-900 p-6 transition-all duration-500 md:hidden
         ${open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"}
       `}>
-        <nav className="flex flex-col gap-2">
+        <nav className="flex flex-col gap-2 bg-white dark:bg-gray-700 px-4 pt-0.5 rounded-b-2xl">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}

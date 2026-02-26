@@ -8,6 +8,7 @@ const Teams = () => {
     { name: "Ssekitoleko James", role: "Engineer", category: "Engineering" },
     { name: "Sukwe Benjamin", role: "Chief Technology Officer", category: "Technical" },
     { name: "Kyampeire Olivia", role: "Treasurer", category: "Administration" },
+    { name: "Batwala Julius Lukwitira", role: "Accountant Officer", category: "Administration" },
     { name: "Kizza Edwin", role: "Electrical Engineer", category: "Engineering" },
     { name: "Tumukwatse Benard", role: "Surveyor Engineer", category: "Engineering" },
     { name: "Wafula Ibrahim", role: "Electrical Engineer", category: "Engineering" },
