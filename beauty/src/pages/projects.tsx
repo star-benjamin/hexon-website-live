@@ -43,21 +43,23 @@ const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: st
               alt={`${title} - ${img.caption}`} 
               className="w-full h-full object-cover"
             />
-            {/* 2. THE CAPTION OVERLAY */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 pt-12 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-              <p className="text-white text-sm font-medium tracking-wide">
-                <span className="text-amber-500 font-bold mr-2">0{idx + 1} //</span> 
-                {img.caption}
-              </p>
-            </div>
+           
           </div>
         ))}
+      </div>
+
+      {/* 2.CAPTION OVERLAY  */}
+      <div className="absolute bottom-0 left-0 right-0  px-5 pb-20 bg-gradient-to-t from-black/100 via-black/60 to-transparent z-20 pointer-events-none">
+        <p className="text-white text-sm md:text-base font-medium tracking-wide animate-in fade-in slide-in-from-bottom-2 duration-500">
+          <span className="text-amber-500 font-black mr-3 uppercase text-xs">0{currentIndex + 1} //</span> 
+          {images[currentIndex].caption}
+        </p>
       </div>
 
       {/* Navigation Arrows */}
       {images.length > 1 && (
         <>
-          <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity z-10 pb-16">
+          <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity z-30 pb-16">
             <button 
               onClick={prevImage}
               className="p-3 bg-white/10 backdrop-blur-md text-white rounded-2xl hover:bg-amber-500 hover:text-black transition-all"
@@ -153,7 +155,7 @@ const Projects = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 mb-32">
-          <div className="grid grid-cols-1 gap-20 h-250">
+          <div className="grid grid-cols-1 gap-12 lg:gap-20 ">
             {caseStudies.map((study, index) => (
               <div 
                 key={index} 
@@ -163,7 +165,7 @@ const Projects = () => {
                   <CaseStudyGallery images={study.images} title={study.title} />
                 </div>
 
-                <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 text-amber-600 dark:text-amber-500 mb-8">
                     <div className="p-3 bg-amber-500/10 rounded-2xl">{study.icon}</div>
                     <span className="text-sm font-black uppercase tracking-widest">{study.sector}</span>
