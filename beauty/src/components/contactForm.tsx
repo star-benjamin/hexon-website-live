@@ -10,7 +10,7 @@ const ContactForm = () => {
     setStatus('Sending...');
 
     const SERVICE_ID = 'hexon_gmail';
-    const TEMPLATE_ID = 'template_cf35xhd';
+    const TEMPLATE_ID = 'template_cpl2dnv';
     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     // submission logic
