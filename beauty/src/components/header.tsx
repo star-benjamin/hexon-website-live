@@ -28,18 +28,19 @@ const Header = ({ logo, darkMode, toggleTheme }: HeaderProps) => {
     <header className="fixed top-0 left-0 right-0 z-[100] bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         
-        {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2 group">
+       {/* Logo */}
+        <NavLink to="/" className="flex items-center gap-2 group flex-shrink-0">
           <img 
             src={logo} 
             alt="Hexon logo" 
-            className="w-14 h-14 md:w-16 md:h-16 object-contain group-hover:scale-105 transition-transform"
+            className="w-12 h-12 md:w-16 md:h-16 object-contain group-hover:scale-105 transition-transform"
           />
-          <div className="hidden lg:block">
-             <span className="block text font-black tracking-tighter dark:text-white uppercase leading-none">
+          {/* Removed 'hidden lg:block' and added responsive text sizing */}
+          <div className="flex flex-col">
+             <span className="block text-sm md:text-base font-black tracking-tighter dark:text-white uppercase leading-none">
                Hexon<span className="text-amber-500">Technical</span>Services
              </span>
-             <span className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
+             <span className="text-[8px] md:text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-[0.1em] md:tracking-[0.2em]">
                More than conquerors
              </span>
           </div>
