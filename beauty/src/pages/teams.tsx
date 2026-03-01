@@ -113,7 +113,7 @@ const Teams = () => {
                   <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
                   {/* Hover Accent */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-amber-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-200/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Details Area */}
