@@ -103,7 +103,7 @@ const ContactForm = () => {
                 type="email" 
                 required 
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
-                placeholder="name@example.com"
+                placeholder="name@gmail.com"
               />
             </div>
 

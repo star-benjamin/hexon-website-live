@@ -3,16 +3,72 @@ import { Helmet } from 'react-helmet-async';
 
 const Teams = () => {
   const teamMembers = [
-    { name: "Atamba Onnex", role: "Managing Director", category: "Leadership" },
-    { name: "Nahabwe Edson", role: "Director", category: "Leadership" },
-    { name: "Ssekitoleko James", role: "Engineer", category: "Engineering" },
-    { name: "Sukwe Benjamin", role: "Chief Technology Officer", category: "Technical" },
-    { name: "Kyampeire Olivia", role: "Treasurer", category: "Administration" },
-    { name: "Batwala Julius Lukwitira", role: "Accountant Officer", category: "Administration" },
-    { name: "Kizza Edwin", role: "Electrical Engineer", category: "Engineering" },
-    { name: "Tumukwatse Benard", role: "Surveyor Engineer", category: "Engineering" },
-    { name: "Wafula Ibrahim", role: "Electrical Engineer", category: "Engineering" },
-    { name: "Acut Nabot", role: "Civil Engineer", category: "Engineering" },
+    { 
+      name: "Atamba Onnex", 
+      role: "Managing Director", 
+      category: "Leadership",
+      image: "/images/employess/logo.jpg" 
+    },
+    { 
+      name: "Nahabwe Edson", 
+      role: "Director", 
+      category: "Leadership",
+      image: "/images/employess/Edson.jpeg" 
+    },
+    { 
+      name: "Twinomujuni Phiona", 
+      role: "Procurement Officer", 
+      category: "Administration",
+      image: "/images/employess/Procurement officer Twinomujuni phiona.jpeg" 
+    },
+    { 
+      name: "Ssekitoleko James", 
+      role: "Engineer", 
+      category: "Engineering",
+      image: "/images/employess/logo.jpg" 
+    },
+    { 
+      name: "Sukwe Benjamin", 
+      role: "Chief Technology Officer", 
+      category: "Technical",
+      image: "/images/employess/logo.jpg" 
+    },
+    { 
+      name: "Kyampeire Olivia", 
+      role: "Treasurer", 
+      category: "Administration",
+      image: "/images/employess/Kyampeire Olivia  Administrator.jpeg" 
+    },
+    { 
+      name: "Batwala Julius Lukwitira", 
+      role: "Accountant Officer", 
+      category: "Administration",
+      image: "/images/employess/logo.jpg" 
+    },
+    { 
+      name: "Kizza Edwin", 
+      role: "Electrical Engineer", 
+      category: "Engineering",
+      image: "/images/employess/Electrical engineer kiiza Edwin.jpeg" 
+    },
+    { 
+      name: "Tumukwatse Benard", 
+      role: "Surveyor Engineer", 
+      category: "Engineering",
+      image: "/images/employess/logo.jpg" 
+    },
+    { 
+      name: "Wafula Abraham", 
+      role: "Electrical Engineer", 
+      category: "Engineering",
+      image: "/images/employess/logo.jpg" 
+    },
+    { 
+      name: "Acut Nabot", 
+      role: "Civil Engineer", 
+      category: "Engineering",
+      image: "/images/employess/Acut Nabot civil Engineer.jpeg" 
+    },
   ];
 
   return (
@@ -26,7 +82,7 @@ const Teams = () => {
 
       <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-24 transition-colors duration-500">
         
-        {/* Header - Distinctly separates from the main background */}
+        {/* Header */}
         <div className="pt-32 pb-20 px-6 text-center bg-white dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-700 transition-colors">
           <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-xs mb-4 block">Our People</span>
           <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tighter">
@@ -45,20 +101,19 @@ const Teams = () => {
                 key={index} 
                 className="group bg-white dark:bg-gray-800 rounded-[2.5rem] overflow-hidden shadow-xl dark:shadow-none border border-transparent hover:border-amber-500/50 transition-all duration-500"
               >
-                {/* Image Area */}
-                <div className="relative h-80 bg-gray-100 dark:bg-gray-700/50 overflow-hidden flex items-center justify-center">
-                  {/* Subtle Blueprint Pattern Placeholder */}
-                  <div className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                {/* Image Area - Mapping image here */}
+                <div className="relative h-80 bg-gray-100 dark:bg-gray-700/50 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                  />
                   
-                  <div className="relative z-10 text-center">
-                    <div className="w-16 h-16 bg-gray-200 dark:bg-gray-600 rounded-full mx-auto mb-3 flex items-center justify-center">
-                       <span className="text-gray-400 dark:text-gray-500">👤</span>
-                    </div>
-                    <span className="text-[10px] uppercase font-black text-gray-400 dark:text-gray-500 tracking-widest">Technician Profile</span>
-                  </div>
+                  {/* Subtle Blueprint Overlay (Still kept for technical aesthetic) */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
                   {/* Hover Accent */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Details Area */}
@@ -95,7 +150,6 @@ const Teams = () => {
         {/* Brand Culture Callout */}
         <div className="max-w-7xl mx-auto px-6 mb-20">
           <div className="bg-amber-500 dark:bg-amber-500 rounded-[3.5rem] p-12 md:p-20 text-center text-black relative overflow-hidden group shadow-2xl">
-            {/* Visual Flair */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-black/5 rounded-full -mr-32 -mt-32 transition-transform group-hover:scale-150 duration-700" />
             
             <div className="relative z-10">
