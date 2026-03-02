@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react'; 
-import ThemeToggle from './themeToggle'; 
+//import ThemeToggle from './themeToggle'; 
 
 interface HeaderProps {
   logo: string;
@@ -68,7 +68,7 @@ const Header = ({ logo, darkMode, toggleTheme }: HeaderProps) => {
         <div className="flex items-center gap-2 md:gap-4">
           
           {/* THEME TOGGLE - Pass down the props here */}
-          <ThemeToggle darkMode={darkMode} toggleTheme={toggleTheme} />
+          {/* <ThemeToggle darkMode={darkMode} toggleTheme={toggleTheme} /> */}
 
           {/* Mobile Menu Toggle */}
           <button 
