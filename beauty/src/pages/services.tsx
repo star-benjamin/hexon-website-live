@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
   Hospital, BatteryCharging, ShoppingCart, ArrowRight, 
-  Fingerprint, ScanFace, Cctv, ShieldCheck
+  Fingerprint, ScanFace, Cctv, ShieldCheck, 
+  Sun, Droplets, HardHat, ZapOff, Building2 // Added missing icons here
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -26,9 +27,9 @@ const Services = () => {
       desc: "Professional auditing and maintenance to ensure efficiency and safety compliance." 
     },
     { 
-      title: "Hospital & Solar Systems", 
-      icon: <Hospital />, 
-      desc: "Critical solar power and water heating solutions for healthcare and commercial use." 
+      title: "Solar Systems Installation & Maintenance", 
+      icon: <Sun />, 
+      desc: "Critical solar power and water heating solutions for healthcare, commercial, and residential use." 
     },
     { 
       title: "UPS & Backup Systems", 
@@ -38,13 +39,33 @@ const Services = () => {
     { 
       title: "Industrial Electrical Supply", 
       icon: <ShoppingCart />, 
-      desc: "Sourcing and supply of high-grade electrical equipment and evaluated materials." 
+      desc: "Sourcing and supply of high-grade electrical equipment and evaluated materials for large-scale projects." 
     },
     { 
       title: "Security IT Applications", 
       icon: <ScanFace />, 
-      desc: "Integrated IT security software and hardware for modern facility management." 
+      desc: "Integrated IT security software and hardware for modern facility management and data protection." 
     },
+    { 
+      title: "Drilling Water Technology", 
+      icon: <Droplets />, 
+      desc: "Specialized borehole drilling and water management systems using modern engineering techniques." 
+    },
+    { 
+      title: "Construction & Design", 
+      icon: <HardHat />, 
+      desc: "End-to-end structural design and construction management for modern civil infrastructure." 
+    },
+    { 
+      title: "Electrical Safety Audit", 
+      icon: <ZapOff />, 
+      desc: "Comprehensive risk assessment and safety protocols to prevent electrical hazards and fires." 
+    },
+    { 
+      title: "Building Management Services", 
+      icon: <Building2 />, 
+      desc: "Smart automation and maintenance services to optimize building efficiency and comfort." 
+    }
   ];
 
   return (
@@ -97,7 +118,7 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Process Section - High Contrast "Dark Mode" Section */}
+        {/* Process Section */}
         <div className="bg-gray-950 text-white py-24 px-6 border-t border-white/5">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -131,8 +152,8 @@ const Services = () => {
               <div className="absolute -inset-4 bg-amber-500/20 rounded-[3rem] blur-2xl group-hover:bg-amber-500/30 transition-all opacity-50" />
               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 aspect-video lg:aspect-square">
                  <img 
-                   src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=1000" 
-                   alt="Security System Installation" 
+                   src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1000" 
+                   alt="Precision Engineering" 
                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                  />
               </div>

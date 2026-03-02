@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import { Play, MapPin, ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Lock } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-
+import { caseStudies } from '../components/data/caseStudiesData';
+import {videos} from '../components/data/videos';
 
 interface ProjectImage {
   url: string;
@@ -94,39 +95,9 @@ const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: st
 const Projects = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const videos = [
-    { id: 1, title: "Biometric Access Control Setup", videoId: "VIDEO_ID_1", location: "Corporate Plaza, Kampala", category: "Security" },
-    { id: 2, title: "Hospital Solar Grid Installation", videoId: "VIDEO_ID_2", location: "Entebbe Referral", category: "Solar" },
-    { id: 3, title: "High-Definition CCTV Network", videoId: "VIDEO_ID_3", location: "Industrial Area", category: "IT Security" },
-  ];
+  
 
-  // 3. UPDATED CASE STUDIES DATA
-  const caseStudies = [
-    {
-      sector: "Security & IT",
-      title: "Advanced surveilance Biometric Integration ",
-      desc: "Deployment of surveilance cameras and multi-modal facial recognition and biometric entry systems for homes, businesses areas and corporate headquarters.",
-      icon: <Lock size={20} />,
-      images: [
-        { url: "/images/security/cameraOnFence.jpeg", caption: "Camera on the fence" },
-        { url: "/images/security/smartLock.jpeg", caption: "smart authentication device" },
-        { url: "/images/security/intalledCameraFeed.jpeg", caption: "Live camera feed from an installed security camera." },
-        { url: "/images/security/solarPoweredInfraRedSecuriityCamera.jpeg", caption: "Integrated dashboard for real-time traffic logs." }
-      ]
-    },
-    {
-      sector: "Solar Power",
-      title: "Solar System Installation and Maintenance",
-      desc: "Designing and installation of efficient solar systems using high quality materials guaranteed to meet your needs. We also offer solar system maintenance and repair services",
-      icon: <ShieldCheck size={20} />,
-      images: [
-        { url: "/images/solar/roofSolarInstallation1.jpeg", caption: "Rooftop photovoltaic array installation for maximum yield." },
-        { url: "/images/solar/roofSolarInstallation2.jpeg", caption: "Rooftop solar solar panel installation." },
-        { url: "/images/solar/roofSolarInstallation3.jpeg", caption: "Rooftop solar solar panel installation." },
-        { url: "/images/solar/solarStreetLights.jpeg", caption: "solar powered street light installation." }
-      ]
-    }
-  ];
+  
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
