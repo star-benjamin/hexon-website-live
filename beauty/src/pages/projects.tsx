@@ -44,44 +44,44 @@ const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: st
               alt={`${title} - ${img.caption}`} 
               className="w-full h-full object-cover"
             />
-           
           </div>
         ))}
       </div>
 
-      {/* 2.CAPTION OVERLAY  */}
-      <div className="absolute bottom-0 left-0 right-0  px-5 pb-20 bg-gradient-to-t from-black/100 via-black/60 to-transparent z-20 pointer-events-none">
-        <p className="text-white text-sm md:text-base font-medium tracking-wide animate-in fade-in slide-in-from-bottom-2 duration-500">
-          <span className="text-amber-500 font-black mr-3 uppercase text-xs">0{currentIndex + 1} //</span> 
+      {/* 2. CAPTION OVERLAY - Reduced pb-20 to pb-6 for better mobile fit */}
+      <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 bg-gradient-to-t from-black/100 via-black/60 to-transparent z-20 pointer-events-none">
+        <p className="text-white text-sm font-medium tracking-wide animate-in fade-in slide-in-from-bottom-2 duration-500">
+          <span className="text-amber-500 font-black mr-2 uppercase text-[10px]">0{currentIndex + 1} //</span> 
           {images[currentIndex].caption}
         </p>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Fixed Visibility */}
       {images.length > 1 && (
         <>
-          <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity z-30 pb-16">
+          {/* Removed opacity-0 and group-hover classes so they show on touch devices */}
+          <div className="absolute inset-0 flex items-center justify-between px-2 z-30 pointer-events-none">
             <button 
               onClick={prevImage}
-              className="p-3 bg-white/10 backdrop-blur-md text-white rounded-2xl hover:bg-amber-500 hover:text-black transition-all"
+              className="p-2.5 bg-black/30 backdrop-blur-md text-white rounded-xl hover:bg-amber-500 hover:text-black transition-all pointer-events-auto"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
             <button 
               onClick={nextImage}
-              className="p-3 bg-white/10 backdrop-blur-md text-white rounded-2xl hover:bg-amber-500 hover:text-black transition-all"
+              className="p-2.5 bg-black/30 backdrop-blur-md text-white rounded-xl hover:bg-amber-500 hover:text-black transition-all pointer-events-auto"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
           </div>
 
           {/* Progress Indicators */}
-          <div className="absolute top-6 right-6 z-10 flex gap-2">
+          <div className="absolute top-4 right-4 z-10 flex gap-1.5">
              {images.map((_, idx) => (
               <div 
                 key={idx}
                 className={`h-1 transition-all duration-300 rounded-full ${
-                  currentIndex === idx ? 'w-6 bg-amber-500' : 'w-2 bg-white/40'
+                  currentIndex === idx ? 'w-4 bg-amber-500' : 'w-1.5 bg-white/40'
                 }`}
               />
             ))}

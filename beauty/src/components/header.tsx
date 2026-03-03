@@ -109,7 +109,7 @@ const Header = ({ logo, darkMode, toggleTheme }: HeaderProps) => {
           ))}
         </nav>
         
-        <div className="mt-12 p-8 bg-amber-500 rounded-[2.5rem] text-black relative overflow-hidden group">
+        <div className="mt-3 p-8 bg-amber-500 rounded-[2.5rem] text-black relative overflow-hidden group">
           <div className="relative z-10">
             <p className="font-black text-2xl mb-2">Need Help?</p>
             <p className="font-medium opacity-90 mb-6">Connect with our support team on WhatsApp.</p>

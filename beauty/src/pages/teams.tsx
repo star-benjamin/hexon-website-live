@@ -52,12 +52,6 @@ const Teams = () => {
       image: "/images/employess/Electrical engineer kiiza Edwin.jpeg" 
     },
     { 
-      name: "Tumukwatse Benard", 
-      role: "Surveyor Engineer", 
-      category: "Engineering",
-      image: "/images/employess/logo.jpg" 
-    },
-    { 
       name: "Wafula Abraham", 
       role: "Electrical Engineer", 
       category: "Engineering",
@@ -69,6 +63,19 @@ const Teams = () => {
       category: "Engineering",
       image: "/images/employess/Acut Nabot civil Engineer.jpeg" 
     },
+    { 
+      name: "Tumukwatse Benard", 
+      role: "Surveyor", 
+      category: "Engineering",
+      image: "/images/employess/survey.jpeg" 
+    },
+     { 
+      name: "Ndide Roger Nalumoso", 
+      role: "IT Technician", 
+      category: "Technical",
+      image: "/images/employess/IT Technician.jpeg" 
+    },
+    
   ];
 
   return (

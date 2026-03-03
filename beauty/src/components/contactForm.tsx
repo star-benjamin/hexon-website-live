@@ -52,7 +52,7 @@ const ContactForm = () => {
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Email Us</p>
-                <p className="text-xs font-bold">hexontechnical@gmail.com</p>
+                <p className="text-xs font-bold wrap-break-word">hexontechnicalservices@gmail.com</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Call Us</p>
@@ -70,10 +70,10 @@ const ContactForm = () => {
           </div>
         </div>
 
-        {/* Right Side: The Form - Optimized for height */}
+        {/* Right Side*/}
         <div className="p-8">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            {/* Row 1: Two Columns for Name and Email */}
+            {/*Two Columns for Name and Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Full Name</label>
@@ -93,7 +93,7 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Row 2: Service Selection */}
+            {/*Service Selection */}
             <div>
               <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Service Required</label>
               <select name="service" className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white text-sm outline-none">
@@ -104,12 +104,12 @@ const ContactForm = () => {
               </select>
             </div>
 
-            {/* Row 3: Message - Reduced rows */}
+            {/* Message*/}
             <div>
               <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Your message</label>
               <textarea 
                 name="message" 
-                rows={3} // Reduced from 4 to 3
+                rows={3} 
                 required 
                 className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white text-sm outline-none resize-none"
                 placeholder="Technical requirements..."
