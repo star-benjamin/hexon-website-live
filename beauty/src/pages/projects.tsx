@@ -92,12 +92,10 @@ const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: st
   );
 };
 
+
+
 const Projects = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  
-
-  
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -114,42 +112,45 @@ const Projects = () => {
         <meta name="description" content="Explore our technical milestones in Solar Energy and Security." />
       </Helmet>
 
-      <div className="bg-white dark:bg-gray-900 min-h-screen pb-20 transition-colors duration-500">
-        <div className="pt-32 pb-20 px-6 text-center">
-          <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-xs mb-4 block">Proven Experience</span>
-          <h1 className="text-5xl md:text-7xl font-black dark:text-white mb-6 tracking-tighter uppercase">
+      <div className="bg-white dark:bg-gray-900 min-h-screen pb-10 transition-colors duration-500">
+        {/* Header - Reduced padding from pt-32/pb-20 to pt-24/pb-12 */}
+        <div className="pt-24 pb-12 px-6 text-center">
+          <span className="text-amber-500 font-black uppercase tracking-[0.3em] text-xs mb-3 block">Proven Experience</span>
+          <h1 className="text-4xl md:text-6xl font-black dark:text-white mb-4 tracking-tighter uppercase">
             Technical <span className="text-amber-500">Milestones</span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg font-medium">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base font-medium">
             A portfolio of precision engineering and infrastructure reliability.
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 mb-32">
-          <div className="grid grid-cols-1 gap-12 lg:gap-20 ">
+        <div className="max-w-7xl mx-auto px-6 mb-20"> {/* Reduced margin-bottom */}
+          <div className="grid grid-cols-1 gap-10"> {/* Reduced gap from 12/20 to 10 */}
             {caseStudies.map((study, index) => (
               <div 
                 key={index} 
-                className="flex flex-col lg:flex-row bg-gray-50 dark:bg-gray-800 rounded-[3rem] overflow-hidden border border-gray-100 dark:border-gray-700 shadow-xl dark:shadow-none"
+                className="flex flex-col lg:flex-row bg-gray-50 dark:bg-gray-800 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-gray-700 shadow-xl dark:shadow-none"
               >
-                <div className="lg:w-1/2 h-[500px] lg:h-auto min-h-[500px]">
+                {/* Reduced Gallery Height from 500px to 400px */}
+                <div className="lg:w-1/2 h-[350px] lg:h-[450px]"> 
                   <CaseStudyGallery images={study.images} title={study.title} />
                 </div>
 
-                <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center flex-1">
-                  <div className="flex items-center gap-3 text-amber-600 dark:text-amber-500 mb-8">
-                    <div className="p-3 bg-amber-500/10 rounded-2xl">{study.icon}</div>
-                    <span className="text-sm font-black uppercase tracking-widest">{study.sector}</span>
+                {/* Reduced Padding in Content Area */}
+                <div className="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 text-amber-600 dark:text-amber-500 mb-4">
+                    <div className="p-2 bg-amber-500/10 rounded-xl">{study.icon}</div>
+                    <span className="text-xs font-black uppercase tracking-widest">{study.sector}</span>
                   </div>
-                  <h3 className="text-4xl font-black dark:text-white mb-6 leading-none uppercase tracking-tight">
+                  <h3 className="text-3xl font-black dark:text-white mb-4 leading-none uppercase tracking-tight">
                     {study.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-10 text-xl leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 text-base leading-relaxed">
                     {study.desc}
                   </p>
                   <div>
-                    <button className="inline-flex items-center gap-3 bg-gray-900 dark:bg-amber-500 text-white dark:text-black px-10 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all">
-                      View Technical Specs <ExternalLink size={18}/>
+                    <button className="inline-flex items-center gap-2 bg-gray-900 dark:bg-amber-500 text-white dark:text-black px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:scale-105 transition-all">
+                      View Technical Specs <ExternalLink size={14}/>
                     </button>
                   </div>
                 </div>
@@ -158,29 +159,30 @@ const Projects = () => {
           </div>
         </div>
 
-        {/*Video section */}
-        <section className="bg-gray-950 py-32 relative">
-          <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        {/* Video section - Reduced py-32 to py-20 */}
+        <section className="bg-gray-950 py-20 relative">
+          <div className="max-w-7xl mx-auto px-6 mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">
+              <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter">
                 Field <span className="text-amber-500">Documentation</span>
               </h2>
-              <p className="text-gray-500 mt-4 text-xl">Real-time technical deployment on the grid.</p>
+              <p className="text-gray-500 mt-2 text-lg">Real-time technical deployment on the grid.</p>
             </div>
-            <div className="flex gap-4">
-              <button onClick={() => scroll('left')} className="p-5 rounded-2xl border border-gray-800 text-white hover:bg-amber-500 hover:text-black transition-all active:scale-90">
-                <ChevronLeft size={28} />
+            <div className="flex gap-3">
+              <button onClick={() => scroll('left')} className="p-4 rounded-xl border border-gray-800 text-white hover:bg-amber-500 hover:text-black transition-all active:scale-90">
+                <ChevronLeft size={24} />
               </button>
-              <button onClick={() => scroll('right')} className="p-5 rounded-2xl border border-gray-800 text-white hover:bg-amber-500 hover:text-black transition-all active:scale-90">
-                <ChevronRight size={28} />
+              <button onClick={() => scroll('right')} className="p-4 rounded-xl border border-gray-800 text-white hover:bg-amber-500 hover:text-black transition-all active:scale-90">
+                <ChevronRight size={24} />
               </button>
             </div>
           </div>
 
-          <div ref={scrollRef} className="flex gap-10 overflow-x-auto px-6 md:px-[calc((100vw-1280px)/2+24px)] no-scrollbar scroll-smooth">
+          {/* Reduced gap between videos */}
+          <div ref={scrollRef} className="flex gap-6 overflow-x-auto px-6 md:px-[calc((100vw-1280px)/2+24px)] no-scrollbar scroll-smooth">
             {videos.map((video) => (
-              <div key={video.id} className="min-w-[320px] md:min-w-[600px] group">
-                <div className="relative aspect-video rounded-[2.5rem] overflow-hidden bg-black border border-gray-800 group-hover:border-amber-500 transition-colors duration-500">
+              <div key={video.id} className="min-w-[280px] md:min-w-[500px] group"> {/* Reduced min-widths */}
+                <div className="relative aspect-video rounded-[1.5rem] overflow-hidden bg-black border border-gray-800 group-hover:border-amber-500 transition-colors duration-500">
                   <iframe
                     className="w-full h-full opacity-60 group-hover:opacity-100 transition-all duration-700"
                     src={`https://www.youtube.com/embed/${video.videoId}`}
@@ -188,10 +190,10 @@ const Projects = () => {
                     allowFullScreen
                   ></iframe>
                 </div>
-                <div className="mt-8 px-4">
-                  <h3 className="text-white font-black text-2xl uppercase tracking-tight">{video.title}</h3>
-                  <p className="text-gray-500 text-sm flex items-center gap-2 mt-4 font-bold">
-                    <MapPin size={18} className="text-amber-500" /> {video.location}
+                <div className="mt-4 px-2">
+                  <h3 className="text-white font-black text-xl uppercase tracking-tight">{video.title}</h3>
+                  <p className="text-gray-500 text-[10px] flex items-center gap-2 mt-2 font-bold">
+                    <MapPin size={14} className="text-amber-500" /> {video.location}
                   </p>
                 </div>
               </div>

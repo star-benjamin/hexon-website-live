@@ -26,7 +26,7 @@ function ContactUs() {
 
           <div className="flex flex-col items-center justify-center">
             {/* The actual form component */}
-            <div className="w-full max-w-5xl">
+            <div className="w-full max-w-4xl ">
               <ContactForm />
             </div>
             

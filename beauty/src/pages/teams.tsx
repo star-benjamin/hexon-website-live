@@ -106,7 +106,7 @@ const Teams = () => {
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-full object-fill transition-transform duration-700 group-hover:scale-110" 
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" 
                   />
                   
                   {/* Subtle Blueprint Overlay (Still kept for technical aesthetic) */}

@@ -35,7 +35,7 @@ const About = () => {
             <div className="w-full lg:w-1/2 flex justify-center">
               <div className="relative w-full max-w-md lg:max-w-full aspect-[4/3] sm:aspect-video lg:aspect-square bg-black/20 rounded-[2rem] overflow-hidden shadow-2xl rotate-0 sm:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white/20">
                 <img 
-                  src="https://images.unsplash.com/photo-1581092335397-9583ec92d234?auto=format&fit=crop&q=80&w=1000" 
+                  src="/images/power/Electrical maintenance.jpeg" 
                   alt="Hexon Technical Team" 
                   className="w-full h-full object-cover"
                 />

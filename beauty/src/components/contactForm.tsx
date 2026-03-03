@@ -34,111 +34,92 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 py-16 px-6">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl">
+    <section className="bg-gray-50 dark:bg-gray-900 py-8 px-6"> {/* Reduced py-16 to py-8 */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl">
         
-        {/* Left Side: Contact Info */}
-        <div className="bg-amber-500 p-10 text-black flex flex-col justify-between">
+        {/* Left Side: Contact Info - Now more compact */}
+        <div className="bg-amber-500 p-8 text-black flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold mb-6">Let’s Power & Secure Your Project</h2>
-            <p className="mb-8 font-medium opacity-90">
-              From advanced biometric security and CCTV systems to industrial solar grids, 
+            <h2 className="text-2xl font-black mb-4 leading-tight">Let’s Power & Secure Your Project</h2>
+            <p className="mb-6 text-sm font-medium opacity-90 leading-snug">
               Hexon provides the technical precision your infrastructure deserves.
             </p>
             
-            <div className="space-y-6">
+            <div className="grid grid-cols-2 gap-4 md:flex md:flex-col md:space-y-4"> {/* Grid on mobile/sm, stack on md */}
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold opacity-70">Our Office</p>
-                <p className="font-bold">Wakiso Nansana, Nkowe Mende <br/> Kampala Uganda.<br/>P.O.Box 203778.</p>
+                <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Our Office</p>
+                <p className="text-xs font-bold">Nansana, Nkowe Mende, Uganda</p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold opacity-70">Email Us</p>
-                <p className="font-bold">hexontechnical@gmail.com</p>
-              </div>
-               <div>
-                <p className="text-xs uppercase tracking-widest font-bold opacity-70">WhatsApp Us</p>
-                <a 
-                  href='https://wa.me/256393662244?text=Hello%20I%20want%20to%20know%20more' 
-                  target='_blank' 
-                  rel='noopener noreferrer'
-                  className="font-bold underline hover:text-white transition-colors"
-                >
-                  Chat on WhatsApp
-                </a>
+                <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Email Us</p>
+                <p className="text-xs font-bold">hexontechnical@gmail.com</p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest font-bold opacity-70">Call Us</p>
-                <ul className='font-bold'>
-                    <li>+256 393662244</li>
-                    <li>+256 200904538</li>
-                    <li>+256 706933096</li>
-                </ul>
+                <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Call Us</p>
+                <p className="text-xs font-bold">+256 393662244 <br/> +256 706933096</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">WhatsApp</p>
+                <a href='https://wa.me/...' className="text-xs font-bold underline">Chat Now</a>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-black/10">
-            <p className="text-sm font-bold">Available 24/7 for Emergency Technical Support</p>
+          <div className="mt-6 pt-4 border-t border-black/10">
+            <p className="text-[11px] font-black uppercase tracking-tighter">Available 24/7 for Technical Support</p>
           </div>
         </div>
 
-        {/* Right Side: The Form */}
-        <div className="p-10">
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Full Name</label>
-              <input 
-                name="from_name" 
-                type="text" 
-                required 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
-                placeholder="Enter name"
-              />
+        {/* Right Side: The Form - Optimized for height */}
+        <div className="p-8">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+            {/* Row 1: Two Columns for Name and Email */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Full Name</label>
+                <input 
+                  name="from_name" type="text" required 
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white text-sm outline-none"
+                  placeholder="Enter name"
+                />
+              </div>
+              <div>
+                <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Email Address</label>
+                <input 
+                  name="reply_to" type="email" required 
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white text-sm outline-none"
+                  placeholder="name@gmail.com"
+                />
+              </div>
             </div>
 
+            {/* Row 2: Service Selection */}
             <div>
-              <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Email Address</label>
-              <input 
-                name="reply_to" 
-                type="email" 
-                required 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
-                placeholder="name@gmail.com"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Service Required</label>
-              <select name="service" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all">
-                <optgroup label="Security & IT">
-                  <option>Biometric Access Control</option>
-                  <option>CCTV & Surveillance Systems</option>
-                  <option>IT Security Applications</option>
-                </optgroup>
-                <optgroup label="Solar & Power">
-                  <option>Solar System Installation</option>
-                  <option>Solar Water Heaters</option>
-                  <option>UPS & Backup Systems</option>
-                </optgroup>
+              <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Service Required</label>
+              <select name="service" className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white text-sm outline-none">
+                <option>CCTV & Surveillance</option>
+                <option>Biometric Access</option>
+                <option>Solar System Installation</option>
                 <option>General Inquiry</option>
               </select>
             </div>
 
+            {/* Row 3: Message - Reduced rows */}
             <div>
-              <label className="block text-sm font-bold mb-2 text-gray-700 dark:text-gray-300">Your message</label>
+              <label className="block text-[11px] font-black uppercase mb-1 text-gray-500">Your message</label>
               <textarea 
                 name="message" 
-                rows={4}
+                rows={3} // Reduced from 4 to 3
                 required 
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none transition-all"
-                placeholder="Tell us about your technical requirements..."
+                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white text-sm outline-none resize-none"
+                placeholder="Technical requirements..."
               ></textarea>
             </div>
 
             <button 
               type="submit" 
               disabled={status === 'Sending...'}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-black font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-amber-500/20 active:scale-95 disabled:opacity-50"
+              className="w-full bg-amber-500 hover:bg-amber-600 text-black font-black py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20 active:scale-95 text-sm"
             >
               {status || 'Send Message'}
             </button>
