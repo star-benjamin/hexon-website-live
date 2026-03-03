@@ -79,10 +79,17 @@ const Home = () => {
                 />
                 
                 {/* Floating Badge - Made smaller to match new image size */}
-                <div className="absolute bottom-6 left-6 bg-amber-500 p-4 rounded-xl shadow-2xl -rotate-6 group-hover:rotate-0 transition-transform">
-                  <p className="text-black font-black text-xl leading-none">UNBS</p>
-                  <p className="text-black text-[8px] font-bold uppercase tracking-tighter">Quality Standards</p>
+                <div className="absolute bottom-6 left-6 bg-amber-500 py-2 px-4 rounded-full shadow-xl flex items-center gap-2 group-hover:scale-105 transition-transform">
+                <ShieldCheck size={16} className="text-black" /> 
+                <div className="flex flex-col">
+                  <p className="text-black font-black text-xs uppercase tracking-wider leading-none">
+                    Certified
+                  </p>
+                  <p className="text-black text-[7px] font-bold uppercase opacity-80 tracking-tighter">
+                    Registered Standards
+                  </p>
                 </div>
+              </div>
               </div>
             </div>
 
