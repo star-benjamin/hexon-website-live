@@ -13,8 +13,8 @@ const Services = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   const serviceList = [
-    { title: "Biometric Access Control", category: "Security", icon: <Fingerprint />, desc: "Advanced security via fingerprint and facial recognition systems." },
     { title: "CCTV & Surveillance", category: "Security", icon: <Cctv />, desc: "High-definition IP and HD camera installations for 24/7 monitoring." },
+    { title: "Biometric Access Control", category: "Security", icon: <Fingerprint />, desc: "Advanced security via fingerprint and facial recognition systems." },
     { title: "Electrical Auditing", category: "Electrical", icon: <ShieldCheck />, desc: "Professional auditing to ensure efficiency and safety compliance." },
     { title: "Solar Systems", category: "Solar", icon: <Sun />, desc: "Critical solar power solutions for healthcare and commercial use." },
     { title: "UPS & Backup Systems", category: "Electrical", icon: <BatteryCharging />, desc: "Installation of UPS systems for zero-downtime operations." },

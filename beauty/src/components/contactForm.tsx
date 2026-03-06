@@ -56,7 +56,7 @@ const ContactForm = () => {
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Call Us</p>
-                <p className="text-xs font-bold">+256 393662244 <br/> +256 706933096</p>
+                <p className="text-xs font-bold">+256 393662244<br/>+256 200904538<br/> +256 706933096</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">WhatsApp</p>
