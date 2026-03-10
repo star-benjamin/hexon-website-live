@@ -25,7 +25,7 @@ const Teams = () => {
       name: "Ssekitoleko James", 
       role: "Engineer", 
       category: "Engineering",
-      image: "/images/employess/logo.jpg" 
+      image: "/images/employess/renewable.jpeg" 
     },
     { 
       name: "Sukwe Benjamin", 
@@ -55,7 +55,7 @@ const Teams = () => {
       name: "Wafula Abraham", 
       role: "Electrical Engineer", 
       category: "Engineering",
-      image: "/images/employess/logo.jpg" 
+      image: "/images/employess/wafula.jpeg" 
     },
     { 
       name: "Acut Nabot", 

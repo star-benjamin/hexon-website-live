@@ -1,8 +1,22 @@
-import { Lock, ShieldCheck } from 'lucide-react';
+import { Lock, ShieldCheck, Sun, Zap, HardHat, Droplets } from 'lucide-react';
 
-export const caseStudies = [
+
+export interface ProjectImage {
+  url: string;
+  caption: string;
+}
+
+export interface CaseStudy {
+  sector: 'Solar' | 'Security' | 'Electrical' | 'Civil'; 
+  title: string;
+  desc: string;
+  icon: JSX.Element;
+  images: ProjectImage[];
+}
+
+export const caseStudies: CaseStudy[] = [
   {
-    sector: "Security & IT",
+    sector: "Security", 
     title: "Advanced Surveillance Biometric Integration",
     desc: "Deployment of surveillance cameras and multi-modal facial recognition and biometric entry systems for homes, businesses areas and corporate headquarters.",
     icon: <Lock size={20} />,
@@ -14,10 +28,10 @@ export const caseStudies = [
     ]
   },
   {
-    sector: "Solar Power",
+    sector: "Solar", 
     title: "Solar System Installation and Maintenance",
     desc: "Designing and installation of efficient solar systems using high quality materials guaranteed to meet your needs. We also offer solar system maintenance and repair services",
-    icon: <ShieldCheck size={20} />,
+    icon: <Sun size={20} />, 
     images: [
       { url: "/images/solar/roofSolarInstallation1.jpeg", caption: "Rooftop photovoltaic array installation for maximum yield." },
       { url: "/images/solar/roofSolarInstallation2.jpeg", caption: "Rooftop solar solar panel installation." },

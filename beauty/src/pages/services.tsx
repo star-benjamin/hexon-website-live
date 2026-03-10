@@ -23,6 +23,7 @@ const Services = () => {
     { title: "Drilling Water", category: "Civil", icon: <Droplets />, desc: "Specialized borehole drilling and water management systems." },
     { title: "Construction & Design", category: "Civil", icon: <HardHat />, desc: "End-to-end structural design and construction management." },
     { title: "Electrical Safety", category: "Electrical", icon: <ZapOff />, desc: "Comprehensive risk assessment to prevent electrical hazards." },
+    { title: "Electrical Installation", category: "Electrical", icon: <ZapOff />, desc: "Setting up wiring, switches, sockets, lighting and electrical equipment to safely supply power throughout the building." },
     { title: "Building Management", category: "Civil", icon: <Building2 />, desc: "Smart automation to optimize building efficiency." }
   ];
 
@@ -84,12 +85,12 @@ const Services = () => {
                 <h3 className="text-lg font-black mb-2 text-gray-900 dark:text-white uppercase tracking-tight">{service.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed mb-6">{service.desc}</p>
                 
-                <button 
+                {/* <button 
                   onClick={() => navigate('/projects', { state: { filter: service.title } })}
                   className="flex items-center text-amber-600 dark:text-amber-500 font-black text-[10px] uppercase tracking-widest group/link"
                 >
                   View Case Study <ArrowRight size={14} className="ml-2 group-hover/link:translate-x-2 transition-transform" />
-                </button>
+                </button> */}
               </div>
             ))}
           </div>
