@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { Play, MapPin, ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Lock } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Play, MapPin, ChevronLeft, ChevronRight, ExternalLink, ShieldCheck, Lock,  X, Maximize2  } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { caseStudies } from '../components/data/caseStudiesData';
 import { videos } from '../components/data/videos';
@@ -13,14 +13,25 @@ interface ProjectImage {
 
 const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  // Prevent background scrolling when lightbox is open
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isLightboxOpen]);
+
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
@@ -33,64 +44,95 @@ const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: st
   }
 
   return (
-    <div className="relative w-full h-full overflow-hidden group bg-black">
-      {/* Horizontal Slider Wrapper */}
-      <div 
-        className="flex h-full transition-transform duration-700 ease-in-out" 
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {images.map((img, idx) => (
-          <div key={idx} className="w-full h-full flex-shrink-0 relative">
-            <img 
-              src={img.url} 
-              alt={`${title} - ${img.caption}`} 
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
+    <>
+      <div className="relative w-full h-full overflow-hidden group bg-black cursor-zoom-in">
+        {/* Main Image View */}
+        <div 
+          className="flex h-full transition-transform duration-700 ease-in-out" 
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          onClick={() => setIsLightboxOpen(true)}
+        >
+          {images.map((img, idx) => (
+            <div key={idx} className="w-full h-full flex-shrink-0 relative">
+              <img 
+                src={img.url} 
+                alt={`${title} - ${img.caption}`} 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
 
-      {/* 2. CAPTION OVERLAY */}
-      <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 bg-gradient-to-t from-black/100 via-black/60 to-transparent z-20 pointer-events-none">
-        <p className="text-white text-sm font-medium tracking-wide animate-in fade-in slide-in-from-bottom-2 duration-500">
-          <span className="text-amber-500 font-black mr-2 uppercase text-[10px]">0{currentIndex + 1} //</span> 
-          {images[currentIndex].caption}
-        </p>
-      </div>
+        {/* Zoom Indicator */}
+        <div className="absolute top-4 left-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+           <div className="bg-black/50 backdrop-blur-md p-2 rounded-lg text-white">
+              <Maximize2 size={16} />
+           </div>
+        </div>
 
-      {/* Navigation Arrows - Fixed Visibility */}
-      {images.length > 1 && (
-        <>
-          {/* Removed opacity-0 and group-hover classes so they show on touch devices */}
+        {/* CAPTION OVERLAY */}
+        <div className="absolute bottom-0 left-0 right-0 px-5 pb-6 bg-gradient-to-t from-black/100 via-black/60 to-transparent z-20 pointer-events-none">
+          <p className="text-white text-sm font-medium tracking-wide">
+            <span className="text-amber-500 font-black mr-2 uppercase text-[10px]">0{currentIndex + 1} //</span> 
+            {images[currentIndex].caption}
+          </p>
+        </div>
+
+        {/* Inline Navigation Arrows */}
+        {images.length > 1 && (
           <div className="absolute inset-0 flex items-center justify-between px-2 z-30 pointer-events-none">
-            <button 
-              onClick={prevImage}
-              className="p-2.5 bg-black/30 backdrop-blur-md text-white rounded-xl hover:bg-amber-500 hover:text-black transition-all pointer-events-auto"
-            >
+            <button onClick={prevImage} className="p-2.5 bg-black/30 backdrop-blur-md text-white rounded-xl hover:bg-amber-500 hover:text-black transition-all pointer-events-auto">
               <ChevronLeft size={18} />
             </button>
-            <button 
-              onClick={nextImage}
-              className="p-2.5 bg-black/30 backdrop-blur-md text-white rounded-xl hover:bg-amber-500 hover:text-black transition-all pointer-events-auto"
-            >
+            <button onClick={nextImage} className="p-2.5 bg-black/30 backdrop-blur-md text-white rounded-xl hover:bg-amber-500 hover:text-black transition-all pointer-events-auto">
               <ChevronRight size={18} />
             </button>
           </div>
+        )}
+      </div>
 
-          {/* Progress Indicators */}
-          <div className="absolute top-4 right-4 z-10 flex gap-1.5">
-             {images.map((_, idx) => (
-              <div 
-                key={idx}
-                className={`h-1 transition-all duration-300 rounded-full ${
-                  currentIndex === idx ? 'w-4 bg-amber-500' : 'w-1.5 bg-white/40'
-                }`}
-              />
-            ))}
+      {/* FULLSCREEN LIGHTBOX MODAL */}
+      {isLightboxOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-10 animate-in fade-in duration-300">
+          
+          {/* Close Button */}
+          <button 
+            onClick={() => setIsLightboxOpen(false)}
+            className="absolute top-6 right-6 p-3 bg-white/10 hover:bg-amber-500 hover:text-black text-white rounded-full transition-all z-[110]"
+          >
+            <X size={24} />
+          </button>
+
+          {/* Lightbox Navigation */}
+          <div className="absolute inset-x-4 md:inset-x-10 flex items-center justify-between z-[105] pointer-events-none">
+            <button onClick={prevImage} className="p-4 bg-white/5 hover:bg-amber-500 hover:text-black text-white rounded-2xl backdrop-blur-md transition-all pointer-events-auto">
+              <ChevronLeft size={32} />
+            </button>
+            <button onClick={nextImage} className="p-4 bg-white/5 hover:bg-amber-500 hover:text-black text-white rounded-2xl backdrop-blur-md transition-all pointer-events-auto">
+              <ChevronRight size={32} />
+            </button>
           </div>
-        </>
+
+          {/* Large Image Container */}
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+            <img 
+              src={images[currentIndex].url} 
+              alt={images[currentIndex].caption}
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl select-none"
+            />
+            
+            <div className="mt-8 text-center max-w-2xl">
+                <span className="text-amber-500 font-black text-xs uppercase tracking-[0.3em] block mb-2">
+                    Project Image {currentIndex + 1} of {images.length}
+                </span>
+                <h4 className="text-white text-xl md:text-2xl font-bold tracking-tight">
+                    {images[currentIndex].caption}
+                </h4>
+            </div>
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
