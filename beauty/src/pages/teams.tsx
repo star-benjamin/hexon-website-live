@@ -7,7 +7,7 @@ const Teams = () => {
       name: "Atamba Onnex", 
       role: "Managing Director", 
       category: "Leadership",
-      image: "/images/employess/logo.jpg" 
+      image: "/images/employess/Onnex.jpeg" 
     },
     { 
       name: "Nahabwe Edson", 
