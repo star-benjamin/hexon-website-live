@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
       { url: "/images/solar/roofSolarInstallation2.jpeg", caption: "Rooftop solar solar panel installation." },
       { url: "/images/solar/roofSolarInstallation3.jpeg", caption: "Rooftop solar solar panel installation." },
       { url: "/images/solar/solar system installation.jpeg", caption: "Installation of solar system of 4batteries @ 200AH GEL batteries with hybrid inverter of 1.5kw at Namugongo site." },
-      { url: "/images/solar/solar system with lithium b.jpeg", caption: "Solar system with lithium battery& hybrid inverter capacity of 1.5kw." },
+      { url: "/images/solar/solar system with lithiumn b.jpeg", caption: "Solar system with lithium battery& hybrid inverter capacity of 1.5kw." },
       { url: "/images/solar/solar light.jpeg", caption: "Solar lights of 400w installed at Mulongo # cancer Institute." },
       { url: "/images/solar/solar light and camera.jpeg", caption: "Solar light of 400W & solar camera mode of seven star Hikivision with Dual lens at Mulongo cancer Institute." },
       { url: "/images/solar/solar hybrid system.jpeg", caption: "Solar hybrid system with advanced technologies & monitoring system" },

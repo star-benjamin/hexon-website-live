@@ -6,6 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
+    
     <>
       <Helmet>
         <title>Hexon Technical Services | Engineering, Power & Security</title>
