@@ -13,7 +13,7 @@ const Teams = () => {
       name: "Nahabwe Edson", 
       role: "Director", 
       category: "Leadership",
-      image: "/images/employess/Edson.jpeg" 
+      image: "/images/employess/edison.jpg" 
     },
     { 
       name: "Twinomujuni Phiona", 
@@ -31,7 +31,7 @@ const Teams = () => {
       name: "Sukwe Benjamin", 
       role: "Chief Technology Officer", 
       category: "Technical",
-      image: "/images/employess/logo.jpg" 
+      image: "/images/employess/sukwe.jpg" 
     },
     { 
       name: "Kyampeire Olivia", 
