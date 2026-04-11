@@ -1,13 +1,15 @@
 <!doctype html>
-<html lang="en" className="scroll-smooth!">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="/logo.jpg" />
     <link rel="apple-touch-icon" href="/logo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hexon Technical Services LTD</title>
+    
+    <title>Hexon Technical Services | Engineering, Solar & Security in Uganda</title>
+    <meta name="description" content="Certified engineering services in Uganda specializing in industrial solar systems, electrical auditing, and biometric security infrastructure." />
+    <meta name="author" content="Hexon Technical Services LTD" />
 
-    <!--Dark and light mode script to prevent gliches-->
     <script>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark')
@@ -15,10 +17,8 @@
         document.documentElement.classList.remove('dark')
       }
     </script>
-
-    
   </head>
-  <body>
+  <body class="bg-white dark:bg-gray-900 transition-colors duration-500">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

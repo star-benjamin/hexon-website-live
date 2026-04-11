@@ -4,12 +4,16 @@ import { Helmet } from 'react-helmet-async';
 const About = () => {
   return (
     <>
+     
       <Helmet>
-        <title>About Hexon Technical | Uganda's Engineering Experts</title>
-        <meta name="description" content="Established in 2021, Hexon Technical Services is a premier Ugandan engineering firm specializing in Solar and Security." />
+        <title>About Hexon Technical | Registered Engineering Firm in Uganda</title>
+        <meta name="description" content="Established in 2021, Hexon Technical Services is a premier Ugandan engineering firm specializing in solar energy and integrated security IT systems for NGOs and the private sector." />
+        <meta property="og:title" content="About Hexon Technical | Our Vision and Mission" />
+        <meta property="og:description" content="Uganda's leading provider of renewable energy and integrated security solutions." />
+        <meta name="keywords" content='Certified Electricians Uganda, Solar Energy Consultants Kampala, Hexon Technical Nansana, Engineering Tenders Uganda'/>
         <link rel="canonical" href="https://hexontechnicalservices.com/about" />
-        <meta name="keywords" content='Hexon Technical History, Engineering Consultants Uganda, Nansana Technical Services, Professional Electricians Wakiso'/>
       </Helmet>
+      
 
       <div className="bg-white dark:bg-gray-900 transition-colors duration-500 min-h-screen">
         
@@ -27,7 +31,7 @@ const About = () => {
               </p>
               <div className="mt-8 flex items-center justify-center lg:justify-start gap-2 font-bold bg-black/10 w-fit px-5 py-3 rounded-full text-sm mx-auto lg:mx-0">
                 <MapPin size={18} className="flex-shrink-0" /> 
-                <span>Head Office: Nansana-Nkowe, Uganda</span>
+                <span>Head Office: Nansana-Nkowe, Hoima Road, Uganda</span>
               </div>
             </div>
 
@@ -36,7 +40,7 @@ const About = () => {
               <div className="relative w-full max-w-md lg:max-w-full aspect-[4/3] sm:aspect-video lg:aspect-square bg-black/20 rounded-[2rem] overflow-hidden shadow-2xl rotate-0 sm:rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white/20">
                 <img 
                   src="/images/power/Electrical maintenance.jpeg" 
-                  alt="Hexon Technical Team" 
+                  alt="Hexon Technical engineers performing industrial electrical maintenance and auditing in Uganda" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -80,8 +84,8 @@ const About = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {[
-              { icon: <Award size={40} />, title: "Technical Expertise", desc: "National grid and biometric security mastery." },
-              { icon: <ShieldCheck size={40} />, title: "Security-First", desc: "Advanced IT protocols in every power installation." },
+              { icon: <Award size={40} />, title: "Technical Expertise", desc: "ERA-compliant electrical installations and multi-modal biometric security mastery." },
+              { icon: <ShieldCheck size={40} />, title: "Security-First", desc: "Advanced IT networking integrated with industrial solar and power systems." },
               { icon: <Users size={40} />, title: "Social Impact", desc: "Ensuring long-term community project viability." },
               { icon: <Lightbulb size={40} />, title: "Future Ready", desc: "Aimed at a greener, safer Uganda." }
             ].map((item, index) => (

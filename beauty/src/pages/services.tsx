@@ -13,17 +13,17 @@ const Services = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   const serviceList = [
-    { title: "CCTV & Surveillance", category: "Security", icon: <Cctv />, desc: "High-definition IP and HD camera installations for 24/7 monitoring." },
-    { title: "Biometric Access Control", category: "Security", icon: <Fingerprint />, desc: "Advanced security via fingerprint and facial recognition systems." },
-    { title: "Electrical Auditing", category: "Electrical", icon: <ShieldCheck />, desc: "Professional auditing to ensure efficiency and safety compliance." },
-    { title: "Solar Systems", category: "Solar", icon: <Sun />, desc: "Critical solar power solutions for healthcare and commercial use." },
+    { title: "IP CCTV Surveillance Systems", category: "Security", icon: <Cctv />, desc: "Networked HD surveillance with remote monitoring capabilities and integrated storage solutions." },
+    { title: "Facial & Biometric Security", category: "Security", icon: <Fingerprint />, desc: "Multi-modal access control including facial recognition and fingerprint systems for secure office environments." },
+    { title: "Energy Audits & Compliance", category: "Electrical", icon: <ShieldCheck />, desc: "ERA-standard electrical auditing and safety inspections to ensure facility efficiency and legal compliance." },
+    { title: "Industrial Solar Installation", category: "Solar", icon: <Sun />, desc: "Hospital-grade solar grids, institutional backup systems, and industrial solar water heating across Uganda." },
     { title: "UPS & Backup Systems", category: "Electrical", icon: <BatteryCharging />, desc: "Installation of UPS systems for zero-downtime operations." },
     { title: "Industrial Supply", category: "Electrical", icon: <ShoppingCart />, desc: "Sourcing high-grade electrical equipment for large-scale projects." },
     { title: "Security IT Apps", category: "Security", icon: <ScanFace />, desc: "Integrated IT security software for modern facility management." },
-    { title: "Drilling Water", category: "Civil", icon: <Droplets />, desc: "Specialized borehole drilling and water management systems." },
+    { title: "Borehole Drilling & Irrigation", category: "Civil", icon: <Droplets />, desc: "Solar-powered borehole systems and advanced irrigation engineering for agriculture and commercial use." },
     { title: "Construction & Design", category: "Civil", icon: <HardHat />, desc: "End-to-end structural design and construction management." },
     { title: "Electrical Safety", category: "Electrical", icon: <ZapOff />, desc: "Comprehensive risk assessment to prevent electrical hazards." },
-    { title: "Electrical Installation", category: "Electrical", icon: <ZapOff />, desc: "Setting up wiring, switches, sockets, lighting and electrical equipment to safely supply power throughout the building." },
+    { title: "Electrical Panel & DB Dressing", category: "Electrical", icon: <ZapOff />, desc: "Professional distribution board (DB) installation, control panel wiring, and phase balancing for commercial buildings." },
     { title: "Building Management", category: "Civil", icon: <Building2 />, desc: "Smart automation to optimize building efficiency." }
   ];
 
@@ -36,16 +36,20 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Professional Engineering Services | Hexon Technical</title>
+        <title>Engineering & Security Services | Solar, Electrical & Biometrics Uganda</title>
+        <meta name="description" content="Expert electrical auditing, industrial solar installation, biometric security, and civil works across Kampala and Uganda." />
+        <meta property="og:title" content="Engineering & Security Services | Hexon Technical" />
+        <meta property="og:description" content="Comprehensive solar, electrical, and security services tailored for the Ugandan market." />
+        <link rel="canonical" href="https://hexontechnicalservices.com/services" />
       </Helmet>
 
       <div className="bg-white dark:bg-gray-900 min-h-screen">
         
         {/* Compressed Header */}
         <div className="bg-amber-500 pt-24 pb-12 px-6 text-center text-black">
-          <h1 className="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Our Expertise</h1>
+          <h1>Engineering <span className="text-black/70">Solutions</span> & Services</h1>
           <p className="max-w-xl mx-auto font-bold text-sm opacity-85">
-            Precision engineering bridging the gap between power and security.
+            Precision engineering bridging the gap between power and security in Uganda.
           </p>
         </div>
 

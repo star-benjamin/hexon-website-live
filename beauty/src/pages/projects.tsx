@@ -45,6 +45,13 @@ const CaseStudyGallery = ({ images, title }: { images: ProjectImage[], title: st
 
   return (
     <>
+      <Helmet>
+        <title>Engineering Portfolio | Solar & Security Milestones in Uganda</title>
+        <meta name="description" content="Explore our technical milestones: Hospital-grade solar in Namugongo, industrial power in Hoima, and biometric security in Kampala. Real engineering solutions across Uganda." />
+        <meta property="og:title" content="Hexon Technical Projects | Proven Engineering Experience" />
+        <meta property="og:description" content="View our portfolio of solar, electrical, and security installations across Uganda." />
+        <link rel="canonical" href="https://hexontechnicalservices.com/projects" />
+      </Helmet>
       <div className="relative w-full h-full overflow-hidden group bg-black cursor-zoom-in">
         {/* Main Image View */}
         <div 
@@ -160,10 +167,10 @@ const Projects = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Engineering Portfolio | Hexon Technical Projects</title>
-        <meta name="description" content="Explore our technical milestones in Solar Energy and Security." />
-      </Helmet>
+     <Helmet>
+        <title>Engineering Projects in Uganda | Hexon Technical Portfolio</title>
+        <meta name="description" content="View our completed solar installations, biometric security setups, and electrical auditing projects across Kampala, Wakiso, and Entebbe." />
+     </Helmet>
 
       <div className="bg-white dark:bg-gray-900 min-h-screen pb-10 transition-colors duration-500">
         

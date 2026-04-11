@@ -9,11 +9,11 @@ const Home = () => {
     
     <>
       <Helmet>
-        <title>Hexon Technical Services | Engineering, Power & Security</title>
+        <title>Hexon Technical Services | Solar, Electrical & Security in Uganda</title>
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://hexontechnicalservices.com/" />
-        <meta property="og:title" content="Hexon Technical Services | Uganda's Engineering Experts" />
-        <meta property="og:description" content="Turnkey Engineering Solutions: Solar Energy, Civil Works, and Advanced Biometric Security across Uganda." />
+        <meta property="og:title" content="Hexon Technical Services | Engineering, Solar & Security Experts in Uganda" />
+        <meta property="og:description" content="Based in Nansana, Hexon Technical provides ERA-compliant electrical installations, industrial solar grids, and biometric security systems across Uganda. Reliability engineered for your business." />
         <meta property="og:url" content="https://hexontechnicalservices.com/" />
         <meta property="og:image" content="https://hexontechnicalservices.com/logo.jpg" />
         <meta name="keywords" content="Hexon Technical, Solar Uganda, Biometrics Kampala, Civil Engineering Wakiso, Electrical Auditing" />
@@ -27,9 +27,9 @@ const Home = () => {
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/85 to-transparent z-10" />
             <img 
-              src="https://images.unsplash.com/photo-1466611653911-95281773ad90?q=80&w=2000" 
+              src="./images/solar/roofSolarInstallation3.jpeg" 
               className="w-full h-full object-cover opacity-30 scale-105 animate-pulse-slow"
-              alt="Industrial Engineering Background"
+              alt="Electrical panel installation and solar grid commissioning by Hexon Technical Services Uganda"
             />
           </div>
 
@@ -42,11 +42,11 @@ const Home = () => {
                   Engineering | Infrastructure | Security
                 </span>
                 <h1 className="text-5xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-8 tracking-tighter">
-                  Precision <span className="text-amber-500">Engineering.</span> <br/>
+                  Precision <span className="text-amber-500">Engineering in Uganda.</span> <br/>
                   Total Reliability.
                 </h1>
                 <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
-                  From <span className='text-white font-bold'>Industrial Solar Grids</span> to <span className='text-white font-bold'>Civil Works</span> and <span className='text-white font-bold'>Biometric IT Security</span>. Hexon Technical Services provides the backbone for Uganda's modern infrastructure.
+                  From <span className='text-white font-bold'>Industrial Solar Grids</span> to <span className='text-white font-bold'>Civil Works</span> and <span className='text-white font-bold'>Biometric IT Security</span>. Hexon Technical Services provides the backbone modern infrastructure across Kampala, Wakiso, and the wider East African region..
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-5">
@@ -75,7 +75,7 @@ const Home = () => {
               <div className="relative z-10 w-full max-w-[430px] aspect-square rounded-[2.5rem] overflow-hidden border-4 border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700 group">
                 <img 
                   src="/images/infrastructure/onnex.jpeg" 
-                  alt="Hexon Engineering Excellence" 
+                  alt="Industrial electrical auditing and biometric security installation in Kampala by Hexon Technical Services" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 
@@ -103,7 +103,7 @@ const Home = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white uppercase tracking-tighter">
-                From<span className="text-amber-500"> Concept</span> to<span className="text-amber-500"> Commissioning</span>
+                Industrial<span className="text-amber-500"> Solar</span>and<span className="text-amber-500">Electrical Solutions</span>
               </h2>
               <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto italic">
                 We bridge the gap between complex engineering and sustainable daily operations.
@@ -144,6 +144,7 @@ const Home = () => {
 
         {/* --- STATS SECTION --- synchronized with About page */}
         <section className="py-20 bg-amber-500 text-black px-6">
+          <h2 className='sr-only'>Our Impact</h2>
           <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { val: "50+", lab: "Projects Done" },
@@ -165,10 +166,10 @@ const Home = () => {
             <div className="inline-block p-3 bg-amber-500/10 rounded-full text-amber-500 mb-6">
               <Building2 size={32} />
             </div>
-            <h2 className="text-3xl md:text-4xl font-black mb-8 uppercase tracking-tight">Standardized Excellence.</h2>
+            <h2 className="text-3xl md:text-4xl font-black mb-8 uppercase tracking-tight">Standardized Excellence in Uganda.</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
               Based in <span className="text-amber-500 font-bold">Nansana-Nkowe</span>, we are registered providers for 
-              Government agencies, NGOs, and the Private Sector across East Africa.
+              Government agencies, NGOs, and the Private Sector across Uganda.
             </p>
           </div>
         </section>

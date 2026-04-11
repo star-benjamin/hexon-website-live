@@ -16,7 +16,7 @@ const Footer = () => {
           <p className="text-sm leading-relaxed mb-6 italic text-amber-500/80">
             "We are more than conquerors"
           </p>
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             <a href="#" className="hover:text-amber-500 transition-colors"><Facebook size={20} /></a>
             <a href="#" className="hover:text-amber-500 transition-colors"><Twitter size={20} /></a>
             <a href="#" className="hover:text-amber-500 transition-colors"><Instagram size={20} /></a>
@@ -24,7 +24,7 @@ const Footer = () => {
             <a href="https://tiktok.com/@yourhandle" className="hover:text-amber-500 transition-colors flex items-center gap-1">
                 <Music size={20} /> <span className="text-[10px] font-bold uppercase">TikTok</span>
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Quick Links */}
