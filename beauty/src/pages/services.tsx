@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Hospital, BatteryCharging, ShoppingCart, ArrowRight, 
   Fingerprint, ScanFace, Cctv, ShieldCheck, 
-  Sun, Droplets, HardHat, ZapOff, Building2 // Added missing icons here
+  Sun, Droplets, HardHat, ZapOff, Building2, Pipette 
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -13,19 +13,20 @@ const Services = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   const serviceList = [
-    { title: "IP CCTV Surveillance Systems", category: "Security", icon: <Cctv />, desc: "Networked HD surveillance with remote monitoring capabilities and integrated storage solutions." },
-    { title: "Facial & Biometric Security", category: "Security", icon: <Fingerprint />, desc: "Multi-modal access control including facial recognition and fingerprint systems for secure office environments." },
-    { title: "Energy Audits & Compliance", category: "Electrical", icon: <ShieldCheck />, desc: "ERA-standard electrical auditing and safety inspections to ensure facility efficiency and legal compliance." },
-    { title: "Industrial Solar Installation", category: "Solar", icon: <Sun />, desc: "Hospital-grade solar grids, institutional backup systems, and industrial solar water heating across Uganda." },
-    { title: "UPS & Backup Systems", category: "Electrical", icon: <BatteryCharging />, desc: "Installation of UPS systems for zero-downtime operations." },
-    { title: "Industrial Supply", category: "Electrical", icon: <ShoppingCart />, desc: "Sourcing high-grade electrical equipment for large-scale projects." },
-    { title: "Security IT Apps", category: "Security", icon: <ScanFace />, desc: "Integrated IT security software for modern facility management." },
-    { title: "Borehole Drilling & Irrigation", category: "Civil", icon: <Droplets />, desc: "Solar-powered borehole systems and advanced irrigation engineering for agriculture and commercial use." },
-    { title: "Construction & Design", category: "Civil", icon: <HardHat />, desc: "End-to-end structural design and construction management." },
-    { title: "Electrical Safety", category: "Electrical", icon: <ZapOff />, desc: "Comprehensive risk assessment to prevent electrical hazards." },
-    { title: "Electrical Panel & DB Dressing", category: "Electrical", icon: <ZapOff />, desc: "Professional distribution board (DB) installation, control panel wiring, and phase balancing for commercial buildings." },
-    { title: "Building Management", category: "Civil", icon: <Building2 />, desc: "Smart automation to optimize building efficiency." }
-  ];
+  { title: "IP CCTV Surveillance Systems", category: "Security", icon: <Cctv />, desc: "Networked HD surveillance with remote monitoring capabilities and integrated storage solutions." },
+  { title: "Facial & Biometric Security", category: "Security", icon: <Fingerprint />, desc: "Multi-modal access control including facial recognition and fingerprint systems for secure office environments." },
+  { title: "Energy Audits & Compliance", category: "Electrical", icon: <ShieldCheck />, desc: "ERA-standard electrical auditing and safety inspections to ensure facility efficiency and legal compliance." },
+  { title: "Industrial Solar Installation", category: "Solar", icon: <Sun />, desc: "Hospital-grade solar grids, institutional backup systems, and industrial solar water heating across Uganda." },
+  { title: "UPS & Backup Systems", category: "Electrical", icon: <BatteryCharging />, desc: "Installation of UPS systems for zero-downtime operations." },
+  { title: "Industrial Supply", category: "Electrical", icon: <ShoppingCart />, desc: "Sourcing high-grade electrical equipment for large-scale projects." },
+  { title: "Security IT Apps", category: "Security", icon: <ScanFace />, desc: "Integrated IT security software for modern facility management." },
+  { title: "Borehole Drilling & Irrigation", category: "Civil", icon: <Droplets />, desc: "Manual and Solar powered borehole systems and advanced irrigation engineering for agriculture and commercial use." },
+  { title: "Professional Piping Installations", category: "Civil", icon: <Pipette />, desc: "High-standard plumbing, fluid distribution networks, and industrial piping installations for commercial and residential facilities." },
+  { title: "Construction & Design", category: "Civil", icon: <HardHat />, desc: "End-to-end structural design and construction management." },
+  { title: "Electrical Safety", category: "Electrical", icon: <ZapOff />, desc: "Comprehensive risk assessment to prevent electrical hazards." },
+  { title: "Electrical Panel & DB Dressing", category: "Electrical", icon: <ZapOff />, desc: "Professional distribution board (DB) installation, control panel wiring, and phase balancing for commercial buildings." },
+  { title: "Building Management", category: "Civil", icon: <Building2 />, desc: "Smart automation to optimize building efficiency." }
+];
 
   const categories = ['All', 'Solar', 'Security', 'Electrical', 'Civil'];
 

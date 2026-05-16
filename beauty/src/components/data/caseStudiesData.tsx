@@ -1,4 +1,4 @@
-import { Lock, ShieldCheck, Sun, Zap, HardHat, Droplets } from 'lucide-react';
+import { Lock, ShieldCheck, Sun, Zap, HardHat, Droplets, Wrench } from 'lucide-react';
 
 
 export interface ProjectImage {
@@ -61,7 +61,49 @@ export const caseStudies: CaseStudy[] = [
       { url: "/images/infrastructure/construction site.jpeg", caption: "Construction site." },
       { url: "/images/infrastructure/slab.jpeg", caption: "Piping slab of apartment." },
       { url: "/images/infrastructure/slab2.jpeg", caption: "Piping slab of apartment." },
+      { url: "/images/infrastructure/school2.jpg", caption: "Side view showcasing integrated access ramps." },
+      { url: "/images/infrastructure/school1.jpg", caption: "Front elevation of the completed institutional classroom block." },
       { url: "/images/infrastructure/structure design.jpeg", caption: "Structure design." }
+    ]
+  },
+  {
+    sector: "Civil", 
+    title: "Borehole Drilling & Clean Water Supply Systems",
+    desc: "End-to-end water engineering solutions including heavy-machinery borehole drilling, structural pump installations, and the commissioning of high-capacity manual and solar-powered water supply networks across Uganda.",
+    icon: <Droplets size={20} />, 
+    images: [
+      { 
+        url: "/images/Water Drilling/drilling-rig.jpg", 
+        caption: "Heavy-machinery borehole drilling operations in progress." 
+      },
+      { 
+        url: "/images/Water Drilling/drilling-machinery.jpg", 
+        caption: "High-capacity rotary drilling rig setting the well casing." 
+      },
+      { 
+        url: "/images/Water Drilling/pump-installation.jpg", 
+        caption: "Technical team installing the internal stainless steel piping and pump mechanisms." 
+      },
+      { 
+        url: "/images/Water Drilling/completed-borehole.jpg", 
+        caption: "Commissioned and fully functional community water supply system." 
+      }
+    ]
+  },
+    {
+    sector: "Civil", 
+    title: "Industrial Piping & Solar Water Distribution Infrastructure",
+    desc: "Design and deployment of comprehensive fluid distribution networks, featuring automated solar-powered pumping systems, secure storage facility piping, and robust perimeter civil works for high-capacity community and commercial utility distribution.",
+    icon: <Wrench size={20} />, 
+    images: [
+      { 
+        url: "/images/Water Piping/facility-overview.jpg", 
+        caption: "Completed water distribution facility featuring integrated control housing, utility piping, and a secure perimeter installation." 
+      },
+      { 
+        url: "/images/Water Piping/solar-array.jpg", 
+        caption: "Ground-mounted solar array infrastructure engineered to power the high-capacity fluid distribution and pumping systems." 
+      }
     ]
   },
   {
